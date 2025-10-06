@@ -13,6 +13,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rack"
   spec.add_development_dependency "rspec"
 
-  spec.homepage = "https://github.com/yourusername/ruby_telemetry"
+  spec.homepage = "https://github.com/alephys26/ruby-telemetry"
   spec.license = "MIT"
 end

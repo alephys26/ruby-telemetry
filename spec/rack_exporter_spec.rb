@@ -15,8 +15,10 @@ RSpec.describe Telemetry::Emitter::ExporterMiddleware do
     app = ->(env) { [200, {'Content-Type' => 'text/plain'}, ['OK']] }
     mw = Telemetry::Emitter::ExporterMiddleware.new(app)
 
-    status, headers, body = mw.call({ 'PATH_INFO' => '/metrics' })
-    expect(status).to eq(200)
-    expect(headers['Content-Type']).to include('text/plain')
+  status, headers, body = mw.call({ 'PATH_INFO' => '/metrics' })
+  expect(status).to eq(200)
+  # Rack 3 uses lowercase header keys; be tolerant of either form
+  content_type = headers['Content-Type'] || headers['content-type']
+  expect(content_type).to include('text/plain')
   end
 end

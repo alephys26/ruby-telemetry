@@ -20,10 +20,13 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
-        bundler-cache: true
+        bundler-cache: false
 
     - name: Install dependencies
-      run: bundle install --jobs 4 --retry 3
+      run: |
+        # ensure bundler won't attempt deployment mode when Gemfile/Gemfile.lock differ
+        bundle config --local deployment false || true
+        bundle install --jobs 4 --retry 3
 
     - name: Run specs
       run: bundle exec rspec
