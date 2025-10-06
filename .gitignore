@@ -1,0 +1,13 @@
+/.bundle
+/vendor/bundle
+/.yardoc
+/_yardoc
+/.cache
+/*.gem
+/.DS_Store
+/.env
+/*.log
+/tmp
+/*.swp
+/.idea
+/.vscode
